@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from '../assets/logo.svg'
+import logo from "../assets/logo.svg";
+import { CiShoppingCart } from "react-icons/ci";
+import { CiSearch } from "react-icons/ci";
 const Navbar = () => {
   const links = (
     <>
@@ -56,7 +58,9 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu gap-3 menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end gap-5">
+          <CiShoppingCart className="text-2xl cursor-pointer" />
+          <CiSearch className="text-2xl cursor-pointer" />
           <Link className="btn btn-outline btn-error">Appointment</Link>
         </div>
       </div>

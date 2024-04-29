@@ -4,6 +4,10 @@ import Root from "../Layout/Root";
 import Home from "./../pages/Home/Home";
 import Register from "./../pages/Register/Register";
 import Login from "./../pages/Login/Login";
+import About from "../pages/About/About";
+import Services from "./../pages/Services/Services";
+import Blog from "../pages/Blog/Blog";
+import Contact from "./../pages/Contact/Contact";
 
 const routers = createBrowserRouter([
   {
@@ -14,6 +18,22 @@ const routers = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/register",
