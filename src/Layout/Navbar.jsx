@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-// import logo from '../assets/icons/logo.eps'
+import logo from '../assets/logo.svg'
 const Navbar = () => {
   const links = (
     <>
@@ -49,7 +49,9 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl">Car Doctor</Link>
+          <Link>
+            <img src={logo} alt="" />
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu gap-3 menu-horizontal px-1">{links}</ul>
