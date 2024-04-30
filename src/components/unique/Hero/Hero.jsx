@@ -69,7 +69,7 @@ const Hero = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide
-            key={slide}
+            key={slide.id}
             style={{ backgroundImage: `url(${slide.image})` }}
             className="bg-cover bg-no-repeat  rounded-lg"
           >

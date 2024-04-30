@@ -1,13 +1,12 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
-import Home from "./../pages/Home/Home";
-import Register from "./../pages/Register/Register";
-import Login from "./../pages/Login/Login";
-import About from "../pages/About/About";
-import Services from "./../pages/Services/Services";
-import Blog from "../pages/Blog/Blog";
-import Contact from "./../pages/Contact/Contact";
+import HomePage from '../pages/HomePage/HomePage';
+import AboutPage from './../pages/AboutPage/AboutPage';
+import ServicesPage from "../pages/ServicesPage/ServicesPage";
+import BlogPage from './../pages/BlogPage/BlogPage';
+import ContactPage from "../pages/ContactPage/ContactPage";
+import RegisterPage from "../pages/RegisterPage/RegisterPage";
+import LoginPage from "../pages/LoginPage/LoginPage";
 
 const routers = createBrowserRouter([
   {
@@ -17,31 +16,31 @@ const routers = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <HomePage />,
       },
       {
         path: "/about",
-        element: <About />,
+        element: <AboutPage/>,
       },
       {
         path: "/services",
-        element: <Services />,
+        element: <ServicesPage/>,
       },
       {
         path: "/blog",
-        element: <Blog />,
+        element: <BlogPage />,
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: <ContactPage />,
       },
       {
         path: "/register",
-        element: <Register />,
+        element: <RegisterPage />,
       },
       {
         path: "/login",
-        element: <Login />,
+        element: <LoginPage />,
       },
     ],
   },
