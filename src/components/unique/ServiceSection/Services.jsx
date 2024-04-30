@@ -61,6 +61,9 @@ const Services = () => {
           <Service key={service.id} service={service} />
         ))}
       </div>
+      <div className="text-center py-7">
+        <button className="btn btn-outline btn-error">More Services</button>
+      </div>
     </section>
   );
 };
