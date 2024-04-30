@@ -5,6 +5,7 @@ import ContactSection from "./../../components/unique/ContactSection/ContactSect
 import Products from "./../../components/unique/ProductSection/Products";
 import Members from "./../../components/unique/TeamSection/Members";
 import Chooses from "./../../components/unique/ChooseSection/Chooses";
+import Reviews from './../../components/unique/Testimonial/Reviews';
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <Products />
       <Members />
       <Chooses />
+      <Reviews/>
     </div>
   );
 };
