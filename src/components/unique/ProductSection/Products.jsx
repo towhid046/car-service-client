@@ -90,6 +90,9 @@ const Products = () => {
           <Product key={product.id} product={product} />
         ))}
       </div>
+      <div className="text-center py-7">
+        <button className="btn btn-outline btn-error">More Products</button>
+      </div>
     </section>
   );
 };

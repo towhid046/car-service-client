@@ -3,7 +3,7 @@ const Product = ({ product }) => {
   const { img, title, rating, price } = product;
   return (
     <div className="p-5 rounded-xl border flex flex-col justify-between">
-      <figure>
+      <figure className="bg-gray-200 mb-5 rounded-xl p-5">
         <img src={img} alt="" />
       </figure>
       <div className="space-y-2 text-center">
