@@ -1,9 +1,9 @@
-import React from 'react';
+import Hero from './../../components/unique/Hero/Hero';
 
 const Home = () => {
     return (
         <div>
-            HOme
+            <Hero/>
         </div>
     );
 };
