@@ -1,11 +1,59 @@
-import React from 'react';
+import loginImg from "../../assets/images/login/login.svg";
+import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <section className="py-10 flex-col lg:flex-row flex items-center justify-between lg:gap-10 gap-8">
+      <div className="lg:w-1/2">
+        <img src={loginImg} alt="" />
+      </div>
+      <div className="border p-10 rounded-lg lg:w-1/2">
+        <form className="space-y-5">
+          <h2 className="text-center text-3xl mb-5 font-bold">Login </h2>
+          <label htmlFor="">
+            <strong>Email</strong>
+            <input
+              type="email"
+              className="input input-bordered w-full"
+              name="email"
+              placeholder="Your email"
+            />
+          </label> <br /> <br />
+          <label htmlFor="">
+            <strong>Password</strong>
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              className="input input-bordered w-full"
+            />
+          </label>
+          <input
+            type="submit"
+            value="Sign In"
+            className="btn btn-error w-full"
+          />
+          <p className="text-center">Or Sign In with</p>
+          <ul className="flex items-center justify-center  gap-3">
+            <li className="btn h-12 w-12 rounded-full">
+              <FaFacebookF className="text-blue-500 text-xl" />
+            </li>
+            <li className="btn h-12 w-12 rounded-full">
+              <FaLinkedinIn className="text-blue-500 text-xl" />
+            </li>
+            <li className="btn h-12 w-12 rounded-full">
+              <FaGoogle className=" text-2xl" />
+            </li>
+          </ul>
+          <p className="mt-12 text-center">
+            Haven't an account?{" "}
+            <Link to={'/register'} className="text-red-400 font-bold">Register</Link>
+          </p>
+        </form>
+      </div>
+    </section>
+  );
 };
 
 export default LoginPage;
