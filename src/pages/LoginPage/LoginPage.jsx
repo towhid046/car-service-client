@@ -1,15 +1,37 @@
+import { useContext } from "react";
 import loginImg from "../../assets/images/login/login.svg";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const LoginPage = () => {
+  const { loginUser } = useContext(AuthContext);
+
+  const handleLoginUser = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const user = { name, email, password };
+    console.log(user);
+
+    // login user
+    loginUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
     <section className="py-10 flex-col lg:flex-row flex items-center justify-between lg:gap-10 gap-8">
       <div className="lg:w-1/2">
         <img src={loginImg} alt="" />
       </div>
       <div className="border p-10 rounded-lg lg:w-1/2">
-        <form className="space-y-5">
+        <form onSubmit={handleLoginUser} className="space-y-5">
           <h2 className="text-center text-3xl mb-5 font-bold">Login </h2>
           <label htmlFor="">
             <strong>Email</strong>
@@ -19,7 +41,8 @@ const LoginPage = () => {
               name="email"
               placeholder="Your email"
             />
-          </label> <br /> <br />
+          </label>{" "}
+          <br /> <br />
           <label htmlFor="">
             <strong>Password</strong>
             <input
@@ -48,7 +71,9 @@ const LoginPage = () => {
           </ul>
           <p className="mt-12 text-center">
             Haven't an account?{" "}
-            <Link to={'/register'} className="text-red-400 font-bold">Register</Link>
+            <Link to={"/register"} className="text-red-400 font-bold">
+              Sign Up
+            </Link>
           </p>
         </form>
       </div>

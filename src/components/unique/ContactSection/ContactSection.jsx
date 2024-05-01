@@ -4,7 +4,7 @@ import { CiLocationOn } from "react-icons/ci";
 const ContactSection = () => {
   const contacts = [
     {
-      id: 2,
+      id: 1,
       icon: <CiCalendar />,
       title: "We are open monday-friday",
       info: "7:00 am - 9:00 pm",
