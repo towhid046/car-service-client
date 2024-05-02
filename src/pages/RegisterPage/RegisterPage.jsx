@@ -14,7 +14,7 @@ const RegisterPage = () => {
     const email = form.email.value;
     const password = form.password.value;
     const user = { name, email, password };
-    console.log(user);
+    
     // crate user
     createUser(email, password)
       .then((res) => {

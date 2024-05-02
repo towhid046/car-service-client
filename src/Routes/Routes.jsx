@@ -1,18 +1,21 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Layout/Root";
-import HomePage from '../pages/HomePage/HomePage';
-import AboutPage from './../pages/AboutPage/AboutPage';
+import HomePage from "../pages/HomePage/HomePage";
+import AboutPage from "./../pages/AboutPage/AboutPage";
 import ServicesPage from "../pages/ServicesPage/ServicesPage";
-import BlogPage from './../pages/BlogPage/BlogPage';
+import BlogPage from "./../pages/BlogPage/BlogPage";
 import ContactPage from "../pages/ContactPage/ContactPage";
 import RegisterPage from "../pages/RegisterPage/RegisterPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import Checkout from "./../pages/Checkout/Checkout";
+import NotFoundPage from "./../pages/NotFoundPage/NotFoundPage";
+import CartDetails from "../pages/CartDetails/CartDetails";
 
 const routers = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <h2>Error</h2>,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: "/",
@@ -20,11 +23,11 @@ const routers = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <AboutPage/>,
+        element: <AboutPage />,
       },
       {
         path: "/services",
-        element: <ServicesPage/>,
+        element: <ServicesPage />,
       },
       {
         path: "/blog",
@@ -42,6 +45,16 @@ const routers = createBrowserRouter([
         path: "/login",
         element: <LoginPage />,
       },
+      {
+        path: "/checkout/:id",
+        element: <Checkout />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/services/${params.id}`),
+      },
+      {
+        path:'/cartDetails',
+        element: <CartDetails/>
+      }
     ],
   },
 ]);

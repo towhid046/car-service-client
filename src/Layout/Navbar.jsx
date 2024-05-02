@@ -2,7 +2,10 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import { CiShoppingCart } from "react-icons/ci";
 import { CiSearch } from "react-icons/ci";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const links = (
     <>
       <li>
@@ -23,8 +26,19 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogOutUser = () => {
+    logOut()
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   return (
-    <nav>
+    <nav className="sticky z-50 top-0 mb-2 ">
       <div className="navbar container mx-auto px-4 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -59,9 +73,28 @@ const Navbar = () => {
           <ul className="menu gap-3 menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end gap-5">
+          <Link to={'/cartDetails'}>
+          <div className="indicator">
           <CiShoppingCart className="text-2xl cursor-pointer" />
+          <span className="indicator-item badge badge-secondary">0</span>
+          </div>
+          </Link>
           <CiSearch className="text-2xl cursor-pointer" />
-          <Link className="btn btn-outline btn-error">Appointment</Link>
+          {user ? (
+            <div>
+              <Link className="btn btn-outline btn-error">Appointment</Link>
+              <button
+                onClick={handleLogOutUser}
+                className="btn btn-primary ml-3"
+              >
+                Log out
+              </button>
+            </div>
+          ) : (
+            <Link to={"/login"}>
+              <button className="btn btn-info">Log in</button>
+            </Link>
+          )}
         </div>
       </div>
     </nav>

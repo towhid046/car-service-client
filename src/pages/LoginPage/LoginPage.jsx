@@ -12,13 +12,13 @@ const LoginPage = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    const user = { name, email, password };
-    console.log(user);
+    const user = { email, password };
 
     // login user
     loginUser(email, password)
       .then((res) => {
         console.log(res.user);
+
       })
       .catch((err) => {
         console.error(err);

@@ -6,59 +6,36 @@ import service4 from "../../../assets/images/services/4.jpg";
 import service5 from "../../../assets/images/services/5.jpg";
 import service6 from "../../../assets/images/services/6.jpg";
 import Service from "./Service";
-
-const services = [
-  {
-    id: 1,
-    image: service1,
-    title: "Auto Car Repair",
-    price: 100,
-  },
-  {
-    id: 2,
-    image: service2,
-    title: "Oil Change",
-    price: 50,
-  },
-  {
-    id: 3,
-    image: service3,
-    title: "Tire Rotation",
-    price: 30,
-  },
-  {
-    id: 4,
-    image: service4,
-    title: "Brake Inspection",
-    price: 80,
-  },
-  {
-    id: 5,
-    image: service5,
-    title: "Car Wash",
-    price: 20,
-  },
-  {
-    id: 6,
-    image: service6,
-    title: "Engine Tune-up",
-    price: 120,
-  },
-];
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Services = () => {
+
+  const [services, setServices] = useState([])
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/services")
+      .then((res) => {
+        setServices(res.data)
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
+
   return (
     <section className="py-12">
       <div className="text-center">
-      <SectionHeading
-        name="Service"
-        title="Our Service Area"
-        description={`The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`}
-      />
+        <SectionHeading
+          name="Service"
+          title="Our Service Area"
+          description={`The majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.`}
+        />
       </div>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((service) => (
-          <Service key={service.id} service={service} />
+        {services?.map((service) => (
+          <Service key={service._id} service={service} />
         ))}
       </div>
       <div className="text-center py-7">
