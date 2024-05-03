@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import OrderItem from "../../components/unique/OrderItem/OrderItem";
 import swal from "sweetalert";
+import axios from "axios";
 
 const CartDetails = () => {
   const [orderItems, setOrderItems] = useState([]);
@@ -11,12 +12,12 @@ const CartDetails = () => {
   const url = `http://localhost:5000/customers?email=${user?.email}`;
 
   useEffect(() => {
-    const loadData = async () => {
-      const res = await fetch(url);
-      const data = await res.json();
-      setOrderItems(data);
-    };
-    loadData();
+    axios
+      .get(url, {withCredentials: true})
+      .then((res) => {
+        setOrderItems(res.data);
+      })
+      .catch((err) => console.error(err));
   }, [url]);
 
   const handleDeleteOrderItem = (id) => {

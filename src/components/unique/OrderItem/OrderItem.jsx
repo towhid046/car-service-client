@@ -1,7 +1,6 @@
 const OrderItem = ({ item, handleDeleteOrderItem, handleUpdateOrder }) => {
   const { _id, img, service_title, service_price, date, status } = item;
 
-
   return (
     <tr>
       <th>
@@ -46,12 +45,16 @@ const OrderItem = ({ item, handleDeleteOrderItem, handleUpdateOrder }) => {
         <span className="font-bold text-base">{date}</span>
       </td>
       <th>
-        <button
-          onClick={() => handleUpdateOrder(_id)}
-          className="btn btn-error text-white btn-sm"
-        >
-          {status}
-        </button>
+        {status === "Confirmed" ? (
+          <button className="btn btn-success bg-purple-500 border-none btn-sm">Confirmed</button>
+        ) : (
+          <button
+            onClick={() => handleUpdateOrder(_id)}
+            className="btn btn-error text-white btn-sm"
+          >
+            {status}
+          </button>
+        )}
       </th>
     </tr>
   );

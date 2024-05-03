@@ -4,25 +4,37 @@ import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import swal from "sweetalert";
+import axios from "axios";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
-  const location = useLocation()
-  // console.log(location.state)
-  const navigate = useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLoginUser = (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    const user = { email, password };
+    const user = { email };
 
     // login user
     loginUser(email, password)
       .then((res) => {
         swal("Success!", "You have login successfully!", "success");
-        navigate(location?.state ? location.state : '/')
+
+
+        // get access token:
+        axios
+          .post("http://localhost:5000/jwt", user, {withCredentials: true})
+          .then((res) => {
+             if(res.data.success){
+              navigate(location?.state ? location.state : "/");
+            }
+          })
+          .catch((err) => {
+            console.error(err);
+          });
       })
       .catch((err) => {
         console.error(err);
