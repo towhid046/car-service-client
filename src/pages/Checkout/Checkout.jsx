@@ -6,7 +6,7 @@ import axios from "axios";
 import PageHeader from "./../../components/shared/PageHeader/PageHeader";
 const Checkout = () => {
   const service = useLoaderData();
-  const { title, _id, price,img } = service;
+  const { title, _id, price, img } = service;
   const { user } = useContext(AuthContext);
 
   const handleCustomerOrder = (e) => {
@@ -17,7 +17,7 @@ const Checkout = () => {
     const phone = form.phone.value;
     const date = form.date.value;
     const message = form.message.value;
-
+    const status = "Confirm";
     const customer = {
       name,
       date,
@@ -28,6 +28,7 @@ const Checkout = () => {
       service_id: _id,
       service_price: price,
       message,
+      status,
     };
 
     axios

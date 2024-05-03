@@ -1,7 +1,6 @@
-const OrderItem = ({ item, handleDeleteOrderItem }) => {
-  const { _id, img, service_title, service_price, date } = item;
+const OrderItem = ({ item, handleDeleteOrderItem, handleUpdateOrder }) => {
+  const { _id, img, service_title, service_price, date, status } = item;
 
-  
 
   return (
     <tr>
@@ -47,7 +46,12 @@ const OrderItem = ({ item, handleDeleteOrderItem }) => {
         <span className="font-bold text-base">{date}</span>
       </td>
       <th>
-        <button className="btn btn-error text-white btn-sm">Pending</button>
+        <button
+          onClick={() => handleUpdateOrder(_id)}
+          className="btn btn-error text-white btn-sm"
+        >
+          {status}
+        </button>
       </th>
     </tr>
   );

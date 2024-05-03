@@ -21,9 +21,8 @@ const LoginPage = () => {
     // login user
     loginUser(email, password)
       .then((res) => {
-        swal("Good job!", "You clicked the button!", "success");
+        swal("Success!", "You have login successfully!", "success");
         navigate(location?.state ? location.state : '/')
-
       })
       .catch((err) => {
         console.error(err);
