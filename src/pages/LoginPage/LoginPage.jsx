@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import loginImg from "../../assets/images/login/login.svg";
 import { FaFacebookF, FaGoogle, FaLinkedinIn } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import swal from "sweetalert";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
+  const location = useLocation()
+  // console.log(location.state)
+  const navigate = useNavigate()
 
   const handleLoginUser = (e) => {
     e.preventDefault();
@@ -17,7 +21,8 @@ const LoginPage = () => {
     // login user
     loginUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        swal("Good job!", "You clicked the button!", "success");
+        navigate(location?.state ? location.state : '/')
 
       })
       .catch((err) => {

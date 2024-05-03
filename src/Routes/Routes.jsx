@@ -10,6 +10,7 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 import Checkout from "./../pages/Checkout/Checkout";
 import NotFoundPage from "./../pages/NotFoundPage/NotFoundPage";
 import CartDetails from "../pages/CartDetails/CartDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const routers = createBrowserRouter([
   {
@@ -47,14 +48,22 @@ const routers = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <Checkout />,
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/services/${params.id}`),
       },
       {
-        path:'/cartDetails',
-        element: <CartDetails/>
-      }
+        path: "/cartDetails",
+        element: (
+          <PrivateRoute>
+            <CartDetails />
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

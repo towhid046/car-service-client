@@ -1,10 +1,15 @@
+const OrderItem = ({ item, handleDeleteOrderItem }) => {
+  const { _id, img, service_title, service_price, date } = item;
 
-const OrderItem = ({ item }) => {
-  const { img, service_title, service_price, date } = item;
+  
+
   return (
     <tr>
       <th>
-        <button className="btn btn-circle">
+        <button
+          onClick={() => handleDeleteOrderItem(_id)}
+          className="btn btn-circle"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

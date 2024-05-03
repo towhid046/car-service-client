@@ -17,15 +17,32 @@ const CartDetails = () => {
     loadData();
   }, [url]);
 
+  const handleDeleteOrderItem = (id) => {
+    fetch(`http://localhost:5000/items/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.acknowledged){
+            const reminig = orderItems.filter(item=> item._id !== id)
+            setOrderItems(reminig)
+        }
+      });
+  };
+
   return (
-    <section className="min-h-screen">
+    <section className="min-h-screen mb-20">
       <PageHeader bgUrl={carDetailBgImg} title={"Cart Details"} />
       <div>
         <div className="overflow-x-auto">
           <table className="table">
             <tbody>
               {orderItems.map((item) => (
-                <OrderItem key={item._id} item={item} />
+                <OrderItem
+                  key={item._id}
+                  handleDeleteOrderItem={handleDeleteOrderItem}
+                  item={item}
+                />
               ))}
             </tbody>
           </table>

@@ -1,10 +1,10 @@
-import React from 'react';
+import Services from './../../components/unique/ServiceSection/Services';
 
 const ServicesPage = () => {
     return (
-        <div>
-            
-        </div>
+        <section>
+            <Services/>
+        </section>
     );
 };
 
