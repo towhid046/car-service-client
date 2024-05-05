@@ -6,10 +6,12 @@ import Products from "./../../components/unique/ProductSection/Products";
 import Members from "./../../components/unique/TeamSection/Members";
 import Chooses from "./../../components/unique/ChooseSection/Chooses";
 import Reviews from './../../components/unique/Testimonial/Reviews';
+import ScrollToTopOnMount from './../../components/shared/ScrollToTopOnMount/ScrollToTopOnMount';
 
 const HomePage = () => {
   return (
     <div>
+      <ScrollToTopOnMount/>
       <Hero />
       <AboutUs />
       <Services />

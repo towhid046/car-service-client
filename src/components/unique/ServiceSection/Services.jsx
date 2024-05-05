@@ -1,10 +1,10 @@
 import SectionHeading from "../../shared/SectionHeading/SectionHeading";
-import service1 from "../../../assets/images/services/1.jpg";
-import service2 from "../../../assets/images/services/2.jpg";
-import service3 from "../../../assets/images/services/3.jpg";
-import service4 from "../../../assets/images/services/4.jpg";
-import service5 from "../../../assets/images/services/5.jpg";
-import service6 from "../../../assets/images/services/6.jpg";
+// import service1 from "../../../assets/images/services/1.jpg";
+// import service2 from "../../../assets/images/services/2.jpg";
+// import service3 from "../../../assets/images/services/3.jpg";
+// import service4 from "../../../assets/images/services/4.jpg";
+// import service5 from "../../../assets/images/services/5.jpg";
+// import service6 from "../../../assets/images/services/6.jpg";
 import Service from "./Service";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -15,7 +15,7 @@ const Services = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/services")
+      .get(`${import.meta.env.VITE_API_URL}/services`)
       .then((res) => {
         setServices(res.data);
         setLoading(false);

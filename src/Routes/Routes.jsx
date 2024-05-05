@@ -54,7 +54,7 @@ const routers = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/services/${params.id}`),
       },
       {
         path: "/cartDetails",

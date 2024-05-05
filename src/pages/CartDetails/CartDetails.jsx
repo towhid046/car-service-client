@@ -9,11 +9,12 @@ import axios from "axios";
 const CartDetails = () => {
   const [orderItems, setOrderItems] = useState([]);
   const { user } = useContext(AuthContext);
+  console.log(user?.email)
   const url = `http://localhost:5000/customers?email=${user?.email}`;
 
   useEffect(() => {
     axios
-      .get(url, {withCredentials: true})
+      .get(url)
       .then((res) => {
         setOrderItems(res.data);
       })

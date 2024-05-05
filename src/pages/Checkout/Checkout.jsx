@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import PageHeader from "./../../components/shared/PageHeader/PageHeader";
+import ScrollToTopOnMount from './../../components/shared/ScrollToTopOnMount/ScrollToTopOnMount';
 const Checkout = () => {
   const service = useLoaderData();
   const { title, _id, price, img } = service;
@@ -32,7 +33,7 @@ const Checkout = () => {
     };
 
     axios
-      .post("http://localhost:5000/customers", customer)
+      .post(`${import.meta.env.VITE_API_URL}/customers`, customer)
       .then((res) => {
         if (res.data.insertedId) {
           form.reset();
@@ -45,8 +46,8 @@ const Checkout = () => {
 
   return (
     <section className="py-12">
+      <ScrollToTopOnMount/>
       <PageHeader bgUrl={checkOutImg} title="Check out" />
-
       <div className="bg-gray-100 lg:p-16 md:p-8 p-4 rounded-xl">
         <form
           onSubmit={handleCustomerOrder}
@@ -95,6 +96,7 @@ const Checkout = () => {
               <input
                 type="email"
                 name="email"
+                disabled
                 defaultValue={user?.email}
                 placeholder="Your Eamil"
                 id=""
