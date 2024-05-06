@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import swal from "sweetalert";
 import axios from "axios";
-import ScrollToTopOnMount from './../../components/shared/ScrollToTopOnMount/ScrollToTopOnMount';
+import ScrollToTopOnMount from "./../../components/shared/ScrollToTopOnMount/ScrollToTopOnMount";
 
 const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
@@ -26,12 +26,10 @@ const LoginPage = () => {
 
         // get access token:
         axios
-          .post(`${import.meta.env.VITE_API_URL}/jwt`, user, { withCredentials: true })
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, user)
           .then((res) => {
             console.log(res.data);
-            if (res.data.success) {
-              navigate(location?.state ? location.state : "/");
-            }
+            navigate(location?.state ? location?.state : "/");
           })
           .catch((err) => {
             console.error(err);
@@ -44,7 +42,7 @@ const LoginPage = () => {
 
   return (
     <section className="py-10 flex-col lg:flex-row flex items-center justify-between lg:gap-10 gap-8">
-      <ScrollToTopOnMount/>
+      <ScrollToTopOnMount />
       <div className="lg:w-1/2">
         <img src={loginImg} alt="" />
       </div>
